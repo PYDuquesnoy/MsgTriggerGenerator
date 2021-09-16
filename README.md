@@ -11,6 +11,11 @@ Current possible solutions to this problem are:
 
 This project defines an additional SuperClass that can be added when defining message classes. It automatically generates the correct trigger as part of the message class compilation. The Added Delete trigger (visible only in the generated .INT code of the subclass) loops over all properties of the messagebody which reference persistent clases and deletes this referenced instances as well. It handle both single value properties as well as List and Array Collections, including One to Many or Parent-childen RelationShips.
 
+Corrections:
+* Added New commands for nested collections and classes
+* Checked for NULL OID before calling %Delete
+  
+
 ## Usage
 
 In your message Class, just add the  an additional superclass like this:

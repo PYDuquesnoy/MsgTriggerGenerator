@@ -1,7 +1,8 @@
 {
     "objectscript.conn": {
-        "server": "irishealth2020",
-        "ns": "ENSEMBLE",
+        "server": "default~iris",
+        "ns": "OPENTIC",
         "active": true
-    }
+    },
+    "workbench.colorTheme": "InterSystems Default Dark"
 }

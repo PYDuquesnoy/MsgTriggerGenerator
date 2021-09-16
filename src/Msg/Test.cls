@@ -32,12 +32,7 @@ ClassMethod Test() As %Status
 
 // Inserts a new Row
 
-ClassMethod Insert(
-	tOne,
-	tTwo,
-	tMyPic,
-	tMyContentRequest,
-	tList) As %Status
+ClassMethod Insert(tOne, tTwo, tMyPic, tMyContentRequest, tList) As %Status
 {
 	#DIM tSC=$$$OK
 	set tObj=..%New()
@@ -53,7 +48,7 @@ ClassMethod Insert(
 		set tR.StringValue=$piece(tList,",",i)
 		do tObj.MyContentResponses.Insert(tR)
 		do tObj.MyArraysReponses.SetAt(tR,i)
-		set tM=##class(Alt.Msg.TestMany).%New()
+		set tM=##class(Msg.TestMany).%New()
 		set tM.Name=$piece(tList,",",i)
 		set tM.TheOne=i
 	}
@@ -68,13 +63,16 @@ Property Two As %String(MAXLEN = 255);
 
 Property MyPic As Ens.StreamContainer;
 
+/// Correct an Error for Streams as they go through the path of .IsA("%Persistent")
+Property MyOtherData As %Library.GlobalCharacterStream;
+
 Property MyContentRequest As Ens.StringRequest;
 
 Property MyContentResponses As list Of Ens.StringResponse;
 
 Property MyArraysReponses As array Of Ens.StringResponse;
 
-Relationship MyMany As Alt.Msg.TestMany [ Cardinality = many, Inverse = TheOne ];
+Relationship MyMany As Msg.TestMany [ Cardinality = many, Inverse = TheOne ];
 
 Storage Default
 {
@@ -99,6 +97,9 @@ Storage Default
 </Value>
 <Value name="5">
 <Value>MyContentResponses</Value>
+</Value>
+<Value name="6">
+<Value>MyOtherData</Value>
 </Value>
 </Data>
 <DefaultData>TestDefaultData</DefaultData>

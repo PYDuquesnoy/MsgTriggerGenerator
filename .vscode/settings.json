@@ -2,7 +2,7 @@
     "objectscript.conn": {
         "server": "default~iris",
         "ns": "OPENTIC",
-        "active": true
+        "active": false
     },
     "workbench.colorTheme": "InterSystems Default Dark"
 }
